@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'home_screen.dart'; // Import HomeScreen
+import 'register_screen.dart'; // Import RegisterScreen
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -6,7 +8,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFD1C4E9), // Light purple background
+      backgroundColor: const Color(0xFFD1C4E9),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Center(
@@ -17,7 +19,7 @@ class LoginScreen extends StatelessWidget {
               const Text(
                 "Login",
                 style: TextStyle(
-                  fontSize: 28,
+                  fontSize: 42,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                   fontStyle: FontStyle.normal,
@@ -36,7 +38,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 5),
               TextField(
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: const Icon(Icons.email),
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
@@ -54,8 +56,8 @@ class LoginScreen extends StatelessWidget {
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
-                  suffixIcon: Icon(Icons.visibility),
+                  prefixIcon: const Icon(Icons.lock),
+                  suffixIcon: const Icon(Icons.visibility),
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
@@ -78,7 +80,14 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Navigate to HomeScreen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     shape: RoundedRectangleBorder(
@@ -100,7 +109,14 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     const Text("Don't have an account? "),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        // Navigate to RegisterScreen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RegisterScreen()),
+                        );
+                      },
                       child: const Text(
                         "Create New Account",
                         style: TextStyle(color: Colors.red),

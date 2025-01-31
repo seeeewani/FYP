@@ -1,4 +1,4 @@
-import 'package:final_year_project/screens/vaccination_blog.dart';
+import 'package:final_year_project/screens/get_started.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.blue,
       ),
-      home: VaccinationBlog(),
+      home: const OnLoadingScreen(),
     );
   }
 }

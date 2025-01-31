@@ -1,4 +1,6 @@
+import 'package:final_year_project/screens/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'home_screen.dart'; // Import HomeScreen
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -6,7 +8,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFD1C4E9), // Light purple background
+      backgroundColor: const Color(0xFFD1C4E9), // Light purple background
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Center(
@@ -36,7 +38,7 @@ class RegisterScreen extends StatelessWidget {
               const SizedBox(height: 5),
               TextField(
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: const Icon(Icons.email),
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
@@ -54,8 +56,8 @@ class RegisterScreen extends StatelessWidget {
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
-                  suffixIcon: Icon(Icons.visibility),
+                  prefixIcon: const Icon(Icons.lock),
+                  suffixIcon: const Icon(Icons.visibility),
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
@@ -73,7 +75,7 @@ class RegisterScreen extends StatelessWidget {
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
+                  prefixIcon: const Icon(Icons.lock),
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
@@ -87,7 +89,10 @@ class RegisterScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // Navigate back to LoginScreen
+                      Navigator.pop(context);
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black,
                       backgroundColor: Colors.white,
@@ -100,7 +105,14 @@ class RegisterScreen extends StatelessWidget {
                     child: const Text("Back"),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // Navigate to HomeScreen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
@@ -123,7 +135,14 @@ class RegisterScreen extends StatelessWidget {
                   children: [
                     const Text("Already had an account? "),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        // Navigate to LoginScreen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginScreen()),
+                        );
+                      },
                       child: const Text(
                         "Login",
                         style: TextStyle(color: Colors.red),

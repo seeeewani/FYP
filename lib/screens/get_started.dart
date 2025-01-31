@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'login_screen.dart';
 
 class OnLoadingScreen extends StatelessWidget {
   const OnLoadingScreen({super.key});
@@ -16,17 +17,17 @@ class OnLoadingScreen extends StatelessWidget {
             Text(
               'Vet Care',
               style: GoogleFonts.outfit(
-                fontSize: 30,
+                fontSize: 35,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
 
             Image.asset(
               'assets/women.png', // Add your image path here
-              width: 250,
-              height: 250,
+              width: 300,
+              height: 300,
             ),
             const SizedBox(height: 20),
 
@@ -60,13 +61,20 @@ class OnLoadingScreen extends StatelessWidget {
               style: GoogleFonts.outfit(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
+                fontStyle: FontStyle.italic,
                 color: const Color(0xFF888888),
               ),
             ),
             const SizedBox(height: 40),
 
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                // Navigate to the LoginScreen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                );
+              },
               child: Container(
                 width: 250,
                 height: 50,
