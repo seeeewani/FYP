@@ -1,4 +1,6 @@
+import 'package:final_year_project/screens/appointments/confirm.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppointmentScreen extends StatefulWidget {
   const AppointmentScreen({super.key});
@@ -32,11 +34,16 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: const BackButton(color: Colors.black),
-        title: const Text('Appointments',
-            style: TextStyle(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, size: 28, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: Text('Appointments',
+            style: GoogleFonts.lato(
                 color: Colors.black,
-                fontSize: 24,
+                fontSize: 26,
                 fontWeight: FontWeight.bold)),
       ),
       body: SingleChildScrollView(
@@ -89,7 +96,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
               items: reasons,
               onChanged: (value) => setState(() => selectedReason = value),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 18),
             _buildNextButton(),
           ],
         ),
@@ -102,8 +109,8 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
       padding: const EdgeInsets.only(bottom: 8),
       child: Text(
         title,
-        style: const TextStyle(
-          fontSize: 16,
+        style: GoogleFonts.lato(
+          fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -124,7 +131,14 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
       ),
       child: DropdownButton<String>(
         value: value,
-        hint: Text(hint),
+        hint: Text(
+          hint,
+          style: GoogleFonts.lato(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            color: Colors.grey[600],
+          ),
+        ),
         isExpanded: true,
         underline: const SizedBox(),
         items: items.map((String item) {
@@ -140,14 +154,17 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
 
   Widget _buildNextButton() {
     return SizedBox(
-      width: double.infinity,
+      width: 2000,
       child: ElevatedButton(
         onPressed: () {
-          // Handle appointment booking
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ConfirmScreen()),
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.purple,
-          padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 5),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
@@ -155,7 +172,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
         child: const Text(
           'Next',
           style: TextStyle(
-            fontSize: 25,
+            fontSize: 28,
             color: Colors.white,
           ),
         ),
@@ -169,10 +186,10 @@ class DateTimePicker extends StatelessWidget {
   final Function(TimeOfDay) onTimeSelected;
 
   const DateTimePicker({
-    Key? key,
+    super.key,
     required this.onDateSelected,
     required this.onTimeSelected,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -187,11 +204,11 @@ class DateTimePicker extends StatelessWidget {
             ),
             child: Row(
               children: [
-                const Text(
+                Text(
                   'Select Date',
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 17,
+                  style: GoogleFonts.lato(
+                    color: Colors.grey[600],
+                    fontSize: 16,
                   ),
                 ),
                 const Spacer(),
@@ -223,16 +240,16 @@ class DateTimePicker extends StatelessWidget {
             ),
             child: Row(
               children: [
-                const Text(
+                Text(
                   'Select Time',
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 17,
+                  style: GoogleFonts.lato(
+                    color: Colors.grey[600],
+                    fontSize: 16,
                   ),
                 ),
                 const Spacer(),
                 IconButton(
-                  icon: const Icon(Icons.access_time, size: 27),
+                  icon: const Icon(Icons.access_time, size: 30),
                   onPressed: () async {
                     final time = await showTimePicker(
                       context: context,

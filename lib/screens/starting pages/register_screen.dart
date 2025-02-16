@@ -1,6 +1,7 @@
-import 'package:final_year_project/screens/login_screen.dart';
+import 'package:final_year_project/screens/add/add_tonopets.dart';
+import 'package:final_year_project/screens/starting%20pages/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'home_screen.dart'; // Import HomeScreen
+import 'package:google_fonts/google_fonts.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -8,7 +9,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFD1C4E9), // Light purple background
+      backgroundColor: const Color(0xFFD1C4E9),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Center(
@@ -16,24 +17,52 @@ class RegisterScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Register",
-                style: TextStyle(
-                  fontSize: 28,
+                style: GoogleFonts.lato(
+                  fontSize: 42,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontStyle: FontStyle.italic,
+                  color: Colors.black,
+                  fontStyle: FontStyle.normal,
                 ),
               ),
               const SizedBox(height: 5),
-              const Text(
+              Text(
                 "Create your new account",
-                style: TextStyle(fontSize: 16, color: Colors.white70),
+                style: GoogleFonts.lato(
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
               ),
               const SizedBox(height: 30),
-              const Text(
+              Text(
+                "Username",
+                style: GoogleFonts.lato(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              const SizedBox(height: 5),
+              TextField(
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.person),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Text(
                 "Email",
-                style: TextStyle(fontSize: 16, color: Colors.black),
+                style: GoogleFonts.lato(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
               const SizedBox(height: 5),
               TextField(
@@ -48,9 +77,13 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              const Text(
+              Text(
                 "Password",
-                style: TextStyle(fontSize: 16, color: Colors.black),
+                style: GoogleFonts.lato(
+                  fontSize: 16,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 5),
               TextField(
@@ -67,15 +100,19 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              const Text(
+              Text(
                 "Confirm Password",
-                style: TextStyle(fontSize: 16, color: Colors.black),
+                style: GoogleFonts.lato(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
               ),
               const SizedBox(height: 5),
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.lock),
+                  suffixIcon: const Icon(Icons.visibility),
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
@@ -86,31 +123,15 @@ class RegisterScreen extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      // Navigate back to LoginScreen
-                      Navigator.pop(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black,
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
-                    ),
-                    child: const Text("Back"),
-                  ),
                   ElevatedButton(
                     onPressed: () {
                       // Navigate to HomeScreen
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const HomeScreen()),
+                            builder: (context) => const AddPetScreen()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -119,11 +140,15 @@ class RegisterScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
+                          horizontal: 40, vertical: 10),
                     ),
-                    child: const Text(
+                    child: Text(
                       "Register",
-                      style: TextStyle(color: Colors.white),
+                      style: GoogleFonts.lato(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
@@ -133,7 +158,15 @@ class RegisterScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Already had an account? "),
+                    Text(
+                      "Already had an account? ",
+                      style: GoogleFonts.lato(
+                        fontSize: 16,
+                        //fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
                     GestureDetector(
                       onTap: () {
                         // Navigate to LoginScreen
@@ -143,9 +176,14 @@ class RegisterScreen extends StatelessWidget {
                               builder: (context) => const LoginScreen()),
                         );
                       },
-                      child: const Text(
+                      child: Text(
                         "Login",
-                        style: TextStyle(color: Colors.red),
+                        style: GoogleFonts.lato(
+                          fontSize: 16,
+                          //fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                          fontStyle: FontStyle.normal,
+                        ),
                       ),
                     ),
                   ],

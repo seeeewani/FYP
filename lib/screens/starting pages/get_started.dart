@@ -8,35 +8,26 @@ class OnLoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFD6CDEA), // Light purple background
+      backgroundColor: const Color(0xFFD6CDEA),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // "Vet Care" Text
-            Text(
-              'Vet Care',
-              style: GoogleFonts.outfit(
-                fontSize: 35,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
             const SizedBox(height: 10),
 
             Image.asset(
-              'assets/women.png', // Add your image path here
-              width: 300,
-              height: 300,
+              'assets/women.png',
+              width: 350,
+              height: 350,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
 
             // "Take Care of Your Pet" Text
             Column(
               children: [
                 Text(
                   'Take Care of',
-                  style: GoogleFonts.outfit(
+                  style: GoogleFonts.lato(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: const Color(0xFF2D2D2D),
@@ -44,7 +35,7 @@ class OnLoadingScreen extends StatelessWidget {
                 ),
                 Text(
                   'Your Pet',
-                  style: GoogleFonts.outfit(
+                  style: GoogleFonts.lato(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: const Color(0xFF2D2D2D),
@@ -52,17 +43,16 @@ class OnLoadingScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
 
-            // Subtext
             Text(
-              '“Compassionate Care for\n your best friend”',
+              '“Compassionate Care for your best friend”',
               textAlign: TextAlign.center,
-              style: GoogleFonts.outfit(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
+              style: GoogleFonts.poppins(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic,
-                color: const Color(0xFF888888),
+                color: Colors.brown,
               ),
             ),
             const SizedBox(height: 40),
@@ -77,7 +67,7 @@ class OnLoadingScreen extends StatelessWidget {
               },
               child: Container(
                 width: 250,
-                height: 50,
+                height: 55,
                 decoration: BoxDecoration(
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(30),
@@ -87,7 +77,7 @@ class OnLoadingScreen extends StatelessWidget {
                   children: [
                     Text(
                       'Get Started',
-                      style: GoogleFonts.outfit(
+                      style: GoogleFonts.lato(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,

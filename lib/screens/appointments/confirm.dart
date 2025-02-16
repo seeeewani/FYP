@@ -1,4 +1,6 @@
+import 'package:final_year_project/screens/appointments/success_msg.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ConfirmScreen extends StatelessWidget {
   const ConfirmScreen({super.key});
@@ -10,24 +12,30 @@ class ConfirmScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: const BackButton(color: Colors.black),
-        title: const Text(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, size: 28, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: Text(
           'Confirm and Pay',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: GoogleFonts.lato(
+              color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(14),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildDoctorCard(),
-              const SizedBox(height: 16),
-              _buildPromoCodeInput(),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
+              _buildPromoCodeInput(context), // Pass context here
+              const SizedBox(height: 12),
               _buildAppointmentDetails(),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
               const Text(
                 'Payment Method',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -35,7 +43,7 @@ class ConfirmScreen extends StatelessWidget {
               const SizedBox(height: 6),
               _buildPaymentMethodCard(),
               const SizedBox(height: 16),
-              _buildPayButton(),
+              _buildPayButton(context),
             ],
           ),
         ),
@@ -48,25 +56,40 @@ class ConfirmScreen extends StatelessWidget {
       child: ListTile(
         leading: Image.asset(
           'assets/dr.neha.png',
-          width: 80,
-          height: 150,
+          width: 85,
+          height: 180,
         ),
-        title: const Text(
+        title: Text(
           'Dr. Neha Shrestha',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: GoogleFonts.lato(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text('Veterinary Behavioral'),
-            Text('Itahari, Sunsari'),
+          children: [
+            Text(
+              'Veterinary Behavioral',
+              style: GoogleFonts.lato(
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
+            ),
+            Text(
+              'Itahari, Sunsari',
+              style: GoogleFonts.lato(
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildPromoCodeInput() {
+  Widget _buildPromoCodeInput(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
@@ -77,9 +100,9 @@ class ConfirmScreen extends StatelessWidget {
         children: [
           const Icon(Icons.local_offer_outlined),
           const SizedBox(width: 8),
-          const Expanded(
+          Expanded(
             child: TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 hintText: 'Promo Code',
               ),
@@ -87,7 +110,12 @@ class ConfirmScreen extends StatelessWidget {
           ),
           IconButton(
             icon: const Icon(Icons.arrow_forward),
-            onPressed: () {},
+            onPressed: () {
+              // Here you can handle promo code application logic
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Promo code applied!')),
+              );
+            },
           ),
         ],
       ),
@@ -97,13 +125,14 @@ class ConfirmScreen extends StatelessWidget {
   Widget _buildAppointmentDetails() {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text(
               'Scheduled Appointment',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style:
+                  GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 16),
             DetailRow(title: 'Full Name', value: 'Shiwani Shrestha'),
@@ -127,27 +156,37 @@ class ConfirmScreen extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         trailing: const Icon(Icons.arrow_forward_ios),
-        onTap: () {},
+        onTap: () {
+          //print("Payment method selected");
+        },
       ),
     );
   }
 
-  Widget _buildPayButton() {
+  Widget _buildPayButton(BuildContext context) {
     return SizedBox(
       width: double.infinity,
+      height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.purple,
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 3),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
         ),
-        onPressed: () {},
-        child: const Text(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const SuccessMsg()),
+          );
+
+          //print("Proceed to payment");
+        },
+        child: Text(
           'Pay Now',
-          style: TextStyle(
-            fontSize: 23,
+          style: GoogleFonts.poppins(
+            fontSize: 28,
             color: Colors.white,
           ),
         ),
@@ -171,11 +210,11 @@ class DetailRow extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(color: Colors.grey[600]),
+            style: GoogleFonts.poppins(color: Colors.grey[700]),
           ),
           Text(
             value,
-            style: const TextStyle(fontWeight: FontWeight.w500),
+            style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
           ),
         ],
       ),

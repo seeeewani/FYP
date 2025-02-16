@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PetInfoScreen extends StatelessWidget {
   const PetInfoScreen({super.key});
@@ -9,18 +10,19 @@ class PetInfoScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFD6CDEA),
       appBar: AppBar(
         backgroundColor: const Color(0xFFD6CDEA),
-        elevation: 0,
+        elevation: 0.5,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, size: 30, color: Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
+        title: Text(
           'Pet Information',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: GoogleFonts.lato(
+              color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -31,25 +33,25 @@ class PetInfoScreen extends StatelessWidget {
                 'assets/meow.png',
                 width: 500,
                 height: 200,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 5),
 
             // Pet Name and Type
-            const Text(
+            Text(
               'kiyo',
-              style: TextStyle(
+              style: GoogleFonts.lato(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
             ),
-            const Text(
+            Text(
               'Orange Cat',
-              style: TextStyle(
+              style: GoogleFonts.lato(
                 fontSize: 18,
-                color: Colors.black87,
+                color: Colors.blueGrey,
                 fontWeight: FontWeight.normal,
               ),
             ),
@@ -80,10 +82,18 @@ class PetInfoScreen extends StatelessWidget {
 
   Widget _buildInfoCard(String title, String value) {
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(14),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
+          )
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,8 +101,8 @@ class PetInfoScreen extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(
-              fontSize: 16,
+            style: GoogleFonts.lato(
+              fontSize: 18,
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
@@ -101,8 +111,9 @@ class PetInfoScreen extends StatelessWidget {
           Text(
             value,
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: 15,
               color: Colors.grey,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],

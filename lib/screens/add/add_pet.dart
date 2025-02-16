@@ -1,4 +1,7 @@
+import 'package:final_year_project/screens/add/kinds.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PetNameScreen extends StatelessWidget {
   const PetNameScreen({super.key});
@@ -8,27 +11,28 @@ class PetNameScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFE6E6FA),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
+        backgroundColor: const Color(0xFFE6E6FA),
+        leading: Container(
+          margin: EdgeInsets.only(left: 3),
+          child: IconButton(
+            icon: Icon(
+              CupertinoIcons.back,
+              size: 35,
+            ),
+            onPressed: () => Navigator.pop(context),
           ),
-          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 40),
-            // Question text
-            const Text(
+            Text(
               "What's your pet's name?",
-              style: TextStyle(
-                fontSize: 24,
+              style: GoogleFonts.lato(
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
@@ -67,129 +71,23 @@ class PetNameScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Add navigation to next screen here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Kind()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     'Next',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// Example of a stateful version if you need to handle the input
-class PetNameScreenStateful extends StatefulWidget {
-  const PetNameScreenStateful({super.key});
-
-  @override
-  State<PetNameScreenStateful> createState() => _PetNameScreenStatefulState();
-}
-
-class _PetNameScreenStatefulState extends State<PetNameScreenStateful> {
-  final TextEditingController _nameController = TextEditingController();
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFE6E6FA),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 40),
-            const Text(
-              "What's your pet's name?",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: _nameController,
-              decoration: const InputDecoration(
-                hintText: "Enter pet's name",
-                hintStyle: TextStyle(
-                  color: Colors.black54,
-                ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.black,
-                    width: 1.0,
-                  ),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.black,
-                    width: 2.0,
-                  ),
-                ),
-              ),
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black,
-              ),
-            ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    final petName = _nameController.text;
-                    if (petName.isNotEmpty) {
-                      // Navigate to next screen with the pet name
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                  child: const Text(
-                    'Next',
-                    style: TextStyle(
-                      fontSize: 16,
+                    style: GoogleFonts.lato(
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

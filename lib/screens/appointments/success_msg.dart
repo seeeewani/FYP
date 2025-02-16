@@ -1,3 +1,4 @@
+import 'package:final_year_project/screens/appointments/confirm.dart';
 import 'package:flutter/material.dart';
 
 class SuccessMsg extends StatelessWidget {
@@ -58,7 +59,13 @@ class SuccessMsg extends StatelessWidget {
             ),
             const SizedBox(height: 48),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ConfirmScreen()),
+                );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,
                 shape: RoundedRectangleBorder(

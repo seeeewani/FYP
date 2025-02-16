@@ -9,23 +9,23 @@ class VaccinationBlog extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFD6CDEA),
       appBar: AppBar(
-        elevation: 0,
+        elevation: 0.5,
         backgroundColor: const Color(0xFFD6CDEA),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, size: 28, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         title: Text(
           "Pet Vaccination Guide",
-          style: GoogleFonts.outfit(
-            fontSize: 20,
+          style: GoogleFonts.lato(
+            fontSize: 25,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
-        centerTitle: true,
+        //centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -34,13 +34,13 @@ class VaccinationBlog extends StatelessWidget {
           children: [
             Text(
               "Why to Vaccinate?",
-              style: GoogleFonts.outfit(
-                fontSize: 22,
+              style: GoogleFonts.lato(
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
-                color: Colors.red.shade800,
+                color: const Color.fromARGB(255, 7, 7, 7),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 15),
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.asset(
@@ -52,9 +52,9 @@ class VaccinationBlog extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               "Prevent diseases like rabies and parvo.",
-              style: GoogleFonts.outfit(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+              style: GoogleFonts.lato(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
               textAlign: TextAlign.center,
@@ -63,7 +63,7 @@ class VaccinationBlog extends StatelessWidget {
             _buildCard(
               title: "Common Vaccines",
               content: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildPetInfo(
                     title: "Dog",
@@ -82,10 +82,10 @@ class VaccinationBlog extends StatelessWidget {
               content: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     "• For Puppies/Kittens:",
-                    style: TextStyle(
-                      fontSize: 15,
+                    style: GoogleFonts.lato(
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -93,10 +93,10 @@ class VaccinationBlog extends StatelessWidget {
                     "  Start at 6-8 weeks",
                   ),
                   const SizedBox(height: 10),
-                  const Text(
+                  Text(
                     "• For Adults:",
-                    style: TextStyle(
-                      fontSize: 15,
+                    style: GoogleFonts.lato(
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -107,10 +107,10 @@ class VaccinationBlog extends StatelessWidget {
             const SizedBox(height: 14),
             Text(
               "\"Stay proactive—keep your pets safe!\"",
-              style: GoogleFonts.outfit(
+              style: GoogleFonts.lato(
                 fontSize: 20,
                 fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
               textAlign: TextAlign.center,
@@ -130,9 +130,9 @@ class VaccinationBlog extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black,
             blurRadius: 8,
-            offset: const Offset(0, 4),
+            //offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -142,7 +142,7 @@ class VaccinationBlog extends StatelessWidget {
           Center(
             child: Text(
               title,
-              style: GoogleFonts.outfit(
+              style: GoogleFonts.poppins(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -162,8 +162,8 @@ class VaccinationBlog extends StatelessWidget {
       children: [
         Text(
           title,
-          style: GoogleFonts.outfit(
-            fontSize: 16,
+          style: GoogleFonts.lato(
+            fontSize: 18,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
@@ -172,9 +172,9 @@ class VaccinationBlog extends StatelessWidget {
         ...items.map(
           (item) => Text(
             item,
-            style: GoogleFonts.outfit(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
+            style: GoogleFonts.lato(
+              fontSize: 16,
+              fontWeight: FontWeight.normal,
               color: Colors.black,
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class VideoCallScreen extends StatelessWidget {
   const VideoCallScreen({super.key});
@@ -9,7 +10,6 @@ class VideoCallScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFE6E6FA),
       body: Stack(
         children: [
-          // Main doctor image
           Positioned(
             top: 3,
             left: 0,
@@ -22,13 +22,11 @@ class VideoCallScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Image.asset(
-                'assets/dr.png', // Replace with your actual asset path
+                'assets/dr.png',
                 fit: BoxFit.cover,
               ),
             ),
           ),
-
-          // Top bar with doctor name and back button
           Positioned(
             top: 0,
             left: 0,
@@ -45,9 +43,9 @@ class VideoCallScreen extends StatelessWidget {
                       ),
                       onPressed: () => Navigator.pop(context),
                     ),
-                    const Text(
+                    Text(
                       'Dr. Neha Shrestha',
-                      style: TextStyle(
+                      style: GoogleFonts.lato(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                       ),
@@ -58,7 +56,6 @@ class VideoCallScreen extends StatelessWidget {
             ),
           ),
 
-          // Small user video preview
           Positioned(
             top: 100,
             right: 20,
@@ -71,13 +68,12 @@ class VideoCallScreen extends StatelessWidget {
               ),
               clipBehavior: Clip.hardEdge,
               child: Image.asset(
-                'assets/pets.png', // Replace with your actual asset path
+                'assets/pets.png',
                 fit: BoxFit.cover,
               ),
             ),
           ),
 
-          // Call controls at bottom
           Positioned(
             bottom: 40,
             left: 0,
@@ -93,16 +89,16 @@ class VideoCallScreen extends StatelessWidget {
           ),
 
           // Timer
-          const Positioned(
+          Positioned(
             bottom: 100,
             left: 0,
             right: 0,
             child: Text(
               '10:50',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.lato(
                 color: Colors.black,
-                fontSize: 16,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),

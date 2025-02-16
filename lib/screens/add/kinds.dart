@@ -16,11 +16,11 @@ class _KindState extends State<Kind> {
     return Scaffold(
       appBar: AppBar(
         leading: Container(
-          margin: EdgeInsets.only(left: 10),
+          margin: EdgeInsets.only(left: 3),
           child: IconButton(
             icon: Icon(
               CupertinoIcons.back,
-              size: 40,
+              size: 35,
             ),
             onPressed: () {
               Navigator.push(
@@ -44,17 +44,17 @@ class _KindState extends State<Kind> {
                   child: Column(
                     children: [
                       Text(
-                        "What kind of pet do \n          you have?",
-                        style: GoogleFonts.poppins(
+                        "What kind of pet do you have?",
+                        style: GoogleFonts.lato(
                           textStyle: TextStyle(
                             color: Colors.black,
-                            fontSize: 30,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 45,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -75,11 +75,11 @@ class _KindState extends State<Kind> {
                                   ),
                                   Text(
                                     'Dog',
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.lato(
                                       textStyle: TextStyle(
                                         color: Colors.black,
                                         fontSize: 22,
-                                        // fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   )
@@ -110,11 +110,11 @@ class _KindState extends State<Kind> {
                                   ),
                                   Text(
                                     'Cat',
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.lato(
                                       textStyle: TextStyle(
                                         color: Colors.black,
                                         fontSize: 22,
-                                        // fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   )
@@ -130,15 +130,15 @@ class _KindState extends State<Kind> {
                 ),
                 GestureDetector(
                   child: Container(
-                    height: 70,
-                    width: 350,
+                    height: 60,
+                    width: 200,
                     decoration: BoxDecoration(
                         color: Colors.black,
                         borderRadius: BorderRadius.circular(20)),
                     child: Center(
                         child: Text(
                       'Next',
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.lato(
                         textStyle: TextStyle(
                           color: Colors.white,
                           fontSize: 25,

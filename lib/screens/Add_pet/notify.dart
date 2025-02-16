@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NotifyScreen extends StatelessWidget {
   const NotifyScreen({super.key});
@@ -9,13 +11,15 @@ class NotifyScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFD6CDEA),
       appBar: AppBar(
         backgroundColor: const Color(0xFFD6CDEA),
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.close,
-            color: Colors.black,
+        leading: Container(
+          margin: EdgeInsets.only(left: 3),
+          child: IconButton(
+            icon: Icon(
+              CupertinoIcons.clear_circled_solid,
+              size: 35,
+            ),
+            onPressed: () => Navigator.pop(context),
           ),
-          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Padding(
@@ -27,33 +31,33 @@ class NotifyScreen extends StatelessWidget {
             const Icon(
               Icons.notifications_active,
               size: 90,
-              color: Colors.blueAccent,
+              color: Colors.black,
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 30),
 
             // Title
-            const Text(
-              "Don't miss any reminders\nabout your pet!",
+            Text(
+              "Don't miss any reminders about your pet!",
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 25,
+              style: GoogleFonts.poppins(
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
-                height: 1.2,
+                //height: 1.2,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 50),
 
             // Description
             Text(
               'Allow push notifications to receive alerts\nabout your pet\'s upcoming reminders.',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 18,
                 color: Colors.grey[600],
-                height: 1.3,
+                height: 1.5,
               ),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 40),
 
             // Allow Button
             SizedBox(
@@ -61,7 +65,7 @@ class NotifyScreen extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -69,11 +73,11 @@ class NotifyScreen extends StatelessWidget {
                 onPressed: () {
                   // Add notification permission request logic here
                 },
-                child: const Text(
+                child: Text(
                   'Yes, allow',
-                  style: TextStyle(
+                  style: GoogleFonts.lato(
                     color: Colors.white,
-                    fontSize: 19,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -86,10 +90,11 @@ class NotifyScreen extends StatelessWidget {
               onPressed: () => Navigator.pop(context),
               child: Text(
                 'Maybe later',
-                style: TextStyle(
-                  color: Colors.grey[800],
+                style: GoogleFonts.lato(
+                  color: Colors.grey[600],
                   fontSize: 18,
                   decoration: TextDecoration.underline,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class VetChatScreen extends StatelessWidget {
   const VetChatScreen({super.key});
@@ -12,23 +13,27 @@ class VetChatScreen extends StatelessWidget {
           const SizedBox(height: 40),
           // AppBar
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Icon(Icons.arrow_back, color: Colors.black),
-                SizedBox(width: 8),
+              children: [
+                Icon(Icons.arrow_back, size: 30, color: Colors.black),
+                SizedBox(
+                  width: 6,
+                  height: 15,
+                ),
                 Text(
                   "Chats",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: GoogleFonts.lato(
+                      fontSize: 25, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 10),
           // Profile Card
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
@@ -42,35 +47,37 @@ class VetChatScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(2),
                     decoration: const BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.purple,
                       shape: BoxShape.circle,
                     ),
                     child: const CircleAvatar(
-                      radius: 20,
-                      backgroundImage: AssetImage(
-                          'assets/dr.neha.png'), // Replace with your image path
+                      radius: 25,
+                      backgroundImage: AssetImage('assets/dr.neha.png'),
                     ),
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(
+                    width: 5,
+                    height: 10,
+                  ),
                   // Add Button
                   Container(
                     width: 30,
                     height: 30,
                     decoration: const BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.purple,
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
                       Icons.add,
                       color: Colors.white,
-                      size: 16,
+                      size: 20,
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
           // Chat Interface
           Expanded(
             child: Container(
@@ -90,24 +97,25 @@ class VetChatScreen extends StatelessWidget {
                       children: [
                         // Profile Picture
                         const CircleAvatar(
-                          radius: 20,
+                          radius: 25,
                           backgroundImage: AssetImage(
                               'assets/dr.neha.png'), // Replace with your image path
                         ),
                         const SizedBox(width: 8),
                         // Name and Title
-                        const Expanded(
+                        Expanded(
                           child: Text(
                             "Dr. Neha Shrestha",
-                            style: TextStyle(
-                              fontSize: 16,
+                            style: GoogleFonts.lato(
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        const Icon(Icons.call, color: Colors.black),
+                        const Icon(Icons.call, size: 30, color: Colors.black),
                         const SizedBox(width: 16),
-                        const Icon(Icons.video_call, color: Colors.black),
+                        const Icon(Icons.video_call_rounded,
+                            size: 34, color: Colors.black),
                       ],
                     ),
                   ),
@@ -115,7 +123,7 @@ class VetChatScreen extends StatelessWidget {
                   // Chat Messages
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(16),
                       child: ListView(
                         children: [
                           // User Message
@@ -125,14 +133,14 @@ class VetChatScreen extends StatelessWidget {
                               padding: const EdgeInsets.all(12),
                               margin: const EdgeInsets.only(bottom: 8),
                               decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(12),
+                                color: Colors.purple,
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                              child: const Text(
+                              child: Text(
                                 "Hello, Dr. Neha. My dog has been acting a bit lethargic lately, and I'm concerned. Can you help?",
-                                style: TextStyle(
+                                style: GoogleFonts.lato(
                                   color: Colors.white,
-                                  fontSize: 14,
+                                  fontSize: 16,
                                 ),
                               ),
                             ),
@@ -145,13 +153,13 @@ class VetChatScreen extends StatelessWidget {
                               margin: const EdgeInsets.only(bottom: 8),
                               decoration: BoxDecoration(
                                 color: Colors.grey.shade200,
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                              child: const Text(
+                              child: Text(
                                 "Of course, I'd be happy to help. When did you first notice this change in behavior?",
-                                style: TextStyle(
+                                style: GoogleFonts.lato(
                                   color: Colors.black87,
-                                  fontSize: 14,
+                                  fontSize: 16,
                                 ),
                               ),
                             ),
@@ -162,7 +170,7 @@ class VetChatScreen extends StatelessWidget {
                   ),
                   // Input Field
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16),
                     child: Row(
                       children: [
                         // Voice Message Icon
@@ -170,7 +178,7 @@ class VetChatScreen extends StatelessWidget {
                           width: 40,
                           height: 40,
                           decoration: BoxDecoration(
-                            color: Colors.blue,
+                            color: Colors.purple,
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -179,16 +187,14 @@ class VetChatScreen extends StatelessWidget {
                               color: Colors.white,
                               size: 20,
                             ),
-                            onPressed: () {
-                              // Add your voice message logic here
-                            },
+                            onPressed: () {},
                           ),
                         ),
                         const SizedBox(width: 8),
                         // Message TextField
                         Expanded(
                           child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
                             decoration: BoxDecoration(
                               color: Colors.grey.shade200,
                               borderRadius: BorderRadius.circular(20),
@@ -196,6 +202,9 @@ class VetChatScreen extends StatelessWidget {
                             child: const TextField(
                               decoration: InputDecoration(
                                 hintText: "Type your message",
+                                hintStyle: TextStyle(
+                                  fontSize: 15,
+                                ),
                                 border: InputBorder.none,
                               ),
                             ),
@@ -207,7 +216,7 @@ class VetChatScreen extends StatelessWidget {
                           width: 40,
                           height: 40,
                           decoration: BoxDecoration(
-                            color: Colors.blue,
+                            color: Colors.purple,
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
@@ -216,9 +225,7 @@ class VetChatScreen extends StatelessWidget {
                               color: Colors.white,
                               size: 20,
                             ),
-                            onPressed: () {
-                              // Add your send message logic here
-                            },
+                            onPressed: () {},
                           ),
                         ),
                       ],
@@ -233,5 +240,3 @@ class VetChatScreen extends StatelessWidget {
     );
   }
 }
-
-void main() => runApp(MaterialApp(home: VetChatScreen()));

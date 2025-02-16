@@ -1,6 +1,7 @@
+import 'package:final_year_project/screens/add/add_tonopets.dart';
 import 'package:flutter/material.dart';
-import 'home_screen.dart'; // Import HomeScreen
-import 'register_screen.dart'; // Import RegisterScreen
+import 'register_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -16,9 +17,9 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Login",
-                style: TextStyle(
+                style: GoogleFonts.lato(
                   fontSize: 42,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -26,14 +27,39 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 5),
-              const Text(
+              Text(
                 "Welcome back!",
-                style: TextStyle(fontSize: 16, color: Colors.black),
+                style: GoogleFonts.lato(fontSize: 16, color: Colors.black),
               ),
               const SizedBox(height: 30),
-              const Text(
+              Text(
+                "Username",
+                style: GoogleFonts.lato(
+                  fontSize: 16,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 5),
+              TextField(
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.person),
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Text(
                 "Email",
-                style: TextStyle(fontSize: 16, color: Colors.black),
+                style: GoogleFonts.lato(
+                  fontSize: 16,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 5),
               TextField(
@@ -50,7 +76,11 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 20),
               const Text(
                 "Password",
-                style: TextStyle(fontSize: 16, color: Colors.black),
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 5),
               TextField(
@@ -66,14 +96,14 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 2),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {},
-                  child: const Text(
+                  child: Text(
                     "Forget Password?",
-                    style: TextStyle(color: Colors.red, fontSize: 14),
+                    style: GoogleFonts.lato(color: Colors.red, fontSize: 16),
                   ),
                 ),
               ),
@@ -85,7 +115,7 @@ class LoginScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HomeScreen()),
+                          builder: (context) => const AddPetScreen()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -94,11 +124,15 @@ class LoginScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 100, vertical: 15),
+                        horizontal: 40, vertical: 10),
                   ),
-                  child: const Text(
+                  child: Text(
                     "Login",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: GoogleFonts.lato(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -107,7 +141,14 @@ class LoginScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Don't have an account? "),
+                    Text(
+                      "Don't have an account? ",
+                      style: GoogleFonts.lato(
+                        color: Colors.black,
+                        fontSize: 16,
+                        //fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     GestureDetector(
                       onTap: () {
                         // Navigate to RegisterScreen
@@ -117,9 +158,13 @@ class LoginScreen extends StatelessWidget {
                               builder: (context) => const RegisterScreen()),
                         );
                       },
-                      child: const Text(
+                      child: Text(
                         "Create New Account",
-                        style: TextStyle(color: Colors.red),
+                        style: GoogleFonts.lato(
+                          color: Colors.red,
+                          fontSize: 16,
+                          //fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],

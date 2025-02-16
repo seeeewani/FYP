@@ -1,3 +1,5 @@
+// import 'package:final_year_project/screens/Add_pet/add_pet0.dart';
+import 'package:final_year_project/screens/Add_pet/add_pet0.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,15 +17,13 @@ class _CreateState extends State<Create> {
     return Scaffold(
         appBar: AppBar(
           leading: Container(
-            margin: EdgeInsets.only(left: 10),
+            margin: EdgeInsets.only(left: 2),
             child: IconButton(
               icon: Icon(
                 CupertinoIcons.back,
-                size: 40,
+                size: 35,
               ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+              onPressed: () {},
             ),
           ),
         ),
@@ -33,13 +33,13 @@ class _CreateState extends State<Create> {
             children: [
               Positioned(
                   top: 10,
-                  left: 120,
+                  left: 100,
                   child: Text(
                     "Overview",
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.lato(
                       textStyle: TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontSize: 30,
+                        color: Colors.black,
+                        fontSize: 35,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -52,7 +52,7 @@ class _CreateState extends State<Create> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(15),
-                        border: Border.all(color: Colors.black12)),
+                        border: Border.all(color: Colors.black)),
                     child: Container(
                       padding: const EdgeInsets.all(20.0),
                       margin: EdgeInsets.only(top: 50),
@@ -63,20 +63,20 @@ class _CreateState extends State<Create> {
                             children: [
                               Text(
                                 'Name',
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.lato(
                                   textStyle: TextStyle(
-                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    color: Colors.black,
                                     fontSize: 18,
                                   ),
                                 ),
                               ),
                               Text(
                                 "Kiyo ",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.lato(
                                   textStyle: TextStyle(
                                     color: Color.fromARGB(255, 0, 0, 0),
                                     fontSize: 18,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               )
@@ -96,20 +96,21 @@ class _CreateState extends State<Create> {
                             children: [
                               Text(
                                 'Species',
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.lato(
                                   textStyle: TextStyle(
-                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    color: Colors.black,
+                                    //fontWeight: FontWeight.bold,
                                     fontSize: 18,
                                   ),
                                 ),
                               ),
                               Text(
                                 "Cat",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.lato(
                                   textStyle: TextStyle(
                                     color: Color.fromARGB(255, 0, 0, 0),
                                     fontSize: 18,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               )
@@ -129,18 +130,18 @@ class _CreateState extends State<Create> {
                             children: [
                               Text(
                                 'Breed',
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.lato(
                                   textStyle: TextStyle(
-                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    color: Colors.black,
                                     fontSize: 18,
                                   ),
                                 ),
                               ),
                               Text(
                                 "Unknown",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.lato(
                                   textStyle: TextStyle(
-                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    color: Colors.black,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -161,8 +162,7 @@ class _CreateState extends State<Create> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(15),
-                        border:
-                            Border.all(color: Color.fromARGB(31, 75, 80, 86))),
+                        border: Border.all(color: Colors.black)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -175,30 +175,38 @@ class _CreateState extends State<Create> {
                     ),
                   )),
               Positioned(
-                  bottom: 30,
-                  left: 18,
-                  child: GestureDetector(
-                    child: Container(
-                      height: 70,
-                      width: 350,
-                      decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                              color: Color.fromARGB(31, 75, 80, 86))),
-                      child: Center(
-                          child: Text(
-                        'Create',
-                        style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.w600,
-                          ),
+                bottom: 30,
+                left: 90,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddHomePetScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: 60,
+                    width: 200,
+                    decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Colors.black)),
+                    child: Center(
+                        child: Text(
+                      'Create',
+                      style: GoogleFonts.lato(
+                        textStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w600,
                         ),
-                      )),
-                    ),
-                  ))
+                      ),
+                    )),
+                  ),
+                ),
+              )
             ],
           ),
         ));
