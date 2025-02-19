@@ -39,6 +39,7 @@ dependencies:
   google_maps_flutter: ^2.10.0
   curved_navigation_bar: ^1.0.6
   google_nav_bar: ^5.0.7
+  lucide_icons: ^0.257.0
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +78,7 @@ flutter:
     - assets/khalti.png
     - assets/vaccinee.png
     - assets/profilepic.png
+    - assets/account.png
 
   #   - images/a_dot_ham.jpeg
 

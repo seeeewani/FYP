@@ -37,7 +37,7 @@ class VaccinationBlog extends StatelessWidget {
               style: GoogleFonts.lato(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
-                color: const Color.fromARGB(255, 7, 7, 7),
+                color: Colors.black,
               ),
             ),
             const SizedBox(height: 15),

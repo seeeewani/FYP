@@ -32,7 +32,7 @@ class PetInfoScreen extends StatelessWidget {
               child: Image.asset(
                 'assets/meow.png',
                 width: 500,
-                height: 200,
+                height: 150,
                 fit: BoxFit.contain,
               ),
             ),
