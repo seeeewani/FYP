@@ -7,9 +7,9 @@ class PetInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFD6CDEA),
+      backgroundColor: Color(0xFFECE1F0),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFD6CDEA),
+        backgroundColor: Color(0xFFECE1F0),
         elevation: 0.5,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, size: 30, color: Colors.black),

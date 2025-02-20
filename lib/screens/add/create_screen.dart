@@ -14,7 +14,9 @@ class _CreateState extends State<Create> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: const Color(0xFFECE1F0),
         appBar: AppBar(
+          backgroundColor: const Color(0xFFECE1F0),
           leading: Container(
             margin: EdgeInsets.only(left: 2),
             child: IconButton(
@@ -167,7 +169,7 @@ class _CreateState extends State<Create> {
                       children: [
                         Image.asset(
                           'assets/cat.png',
-                          color: Color(0xff6256CD),
+                          color: Colors.black,
                           height: 90,
                         ),
                       ],

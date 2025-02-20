@@ -7,10 +7,10 @@ class VaccinationBlog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFD6CDEA),
+      backgroundColor: const Color(0xFFECE1F0),
       appBar: AppBar(
         elevation: 0.5,
-        backgroundColor: const Color(0xFFD6CDEA),
+        backgroundColor: const Color(0xFFECE1F0),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, size: 28, color: Colors.black),
           onPressed: () {

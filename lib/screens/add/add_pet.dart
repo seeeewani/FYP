@@ -9,9 +9,9 @@ class PetNameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE6E6FA),
+      backgroundColor: const Color(0xFFECE1F0),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFE6E6FA),
+        backgroundColor: const Color(0xFFECE1F0),
         leading: Container(
           margin: EdgeInsets.only(left: 3),
           child: IconButton(

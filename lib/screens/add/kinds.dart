@@ -14,7 +14,9 @@ class _KindState extends State<Kind> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFECE1F0),
       appBar: AppBar(
+        backgroundColor: const Color(0xFFECE1F0),
         leading: Container(
           margin: EdgeInsets.only(left: 3),
           child: IconButton(
@@ -64,13 +66,13 @@ class _KindState extends State<Kind> {
                               height: 180,
                               width: 180,
                               decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 224, 222, 250),
+                                  color: Colors.white,
                                   borderRadius: BorderRadius.circular(15)),
                               child: Column(
                                 children: [
                                   Image.asset(
                                     'assets/dog.png',
-                                    color: Color(0xff6256CD),
+                                    color: Colors.black,
                                     height: 140,
                                   ),
                                   Text(
@@ -96,7 +98,7 @@ class _KindState extends State<Kind> {
                               height: 180,
                               width: 180,
                               decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 224, 222, 250),
+                                  color: Colors.white,
                                   borderRadius: BorderRadius.circular(15)),
                               child: Column(
                                 children: [
@@ -104,7 +106,7 @@ class _KindState extends State<Kind> {
                                     padding: const EdgeInsets.all(9.0),
                                     child: Image.asset(
                                       'assets/cat.png',
-                                      color: Color(0xff6256CD),
+                                      color: Colors.black,
                                       height: 120,
                                     ),
                                   ),

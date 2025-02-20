@@ -59,7 +59,7 @@ class DoctorList extends StatelessWidget {
                       distance: doctor['distance']!,
                       description: doctor['description']!,
                     ),
-                    const SizedBox(height: 1),
+                    const SizedBox(height: 6),
                   ],
                 );
               },
@@ -144,7 +144,7 @@ class DoctorCard extends StatelessWidget {
                     const SizedBox(width: 16),
                     const Icon(Icons.location_on,
                         size: 16, color: Colors.black),
-                    const SizedBox(width: 4),
+                    const SizedBox(width: 6),
                     Text(distance),
                   ],
                 ),
@@ -158,7 +158,7 @@ class DoctorCard extends StatelessWidget {
                   ),
                   maxLines: 7,
                 ),
-                const SizedBox(height: 14),
+                const SizedBox(height: 16),
                 Row(
                   children: [
                     GestureDetector(
