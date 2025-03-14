@@ -30,7 +30,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE6E6FA),
+      backgroundColor: const Color(0xFFECE1F0),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -53,6 +53,8 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
           children: [
             _buildSectionTitle('Date and Time'),
             DateTimePicker(
+              selectedDate: selectedDate,
+              selectedTime: selectedTime,
               onDateSelected: (date) {
                 setState(() {
                   selectedDate = date;
@@ -152,15 +154,44 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
     );
   }
 
+  bool _validateForm() {
+    if (selectedDate == null ||
+        selectedTime == null ||
+        selectedType == null ||
+        selectedService == null ||
+        selectedVet == null ||
+        selectedReason == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please fill in all fields'),
+          backgroundColor: Colors.red,
+          duration: Duration(seconds: 2),
+        ),
+      );
+      return false;
+    }
+    return true;
+  }
+
   Widget _buildNextButton() {
     return SizedBox(
       width: 2000,
       child: ElevatedButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const ConfirmScreen()),
-          );
+          if (_validateForm()) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ConfirmScreen(
+                        date: selectedDate!,
+                        time: selectedTime!,
+                        type: selectedType!,
+                        service: selectedService!,
+                        vet: selectedVet!,
+                        reason: selectedReason!,
+                      )),
+            );
+          }
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.purple,
@@ -184,12 +215,28 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
 class DateTimePicker extends StatelessWidget {
   final Function(DateTime) onDateSelected;
   final Function(TimeOfDay) onTimeSelected;
+  final DateTime? selectedDate;
+  final TimeOfDay? selectedTime;
 
   const DateTimePicker({
     super.key,
     required this.onDateSelected,
     required this.onTimeSelected,
+    this.selectedDate,
+    this.selectedTime,
   });
+
+  String _formatDate(DateTime? date) {
+    if (date == null) return 'Select Date';
+    return '${date.day}/${date.month}/${date.year}';
+  }
+
+  String _formatTime(TimeOfDay? time) {
+    if (time == null) return 'Select Time';
+    final hour = time.hour.toString().padLeft(2, '0');
+    final minute = time.minute.toString().padLeft(2, '0');
+    return '$hour:$minute';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -205,9 +252,10 @@ class DateTimePicker extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'Select Date',
+                  _formatDate(selectedDate),
                   style: GoogleFonts.lato(
-                    color: Colors.grey[600],
+                    color:
+                        selectedDate == null ? Colors.grey[600] : Colors.black,
                     fontSize: 16,
                   ),
                 ),
@@ -241,9 +289,10 @@ class DateTimePicker extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'Select Time',
+                  _formatTime(selectedTime),
                   style: GoogleFonts.lato(
-                    color: Colors.grey[600],
+                    color:
+                        selectedTime == null ? Colors.grey[600] : Colors.black,
                     fontSize: 16,
                   ),
                 ),

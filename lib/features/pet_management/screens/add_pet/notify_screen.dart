@@ -1,9 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-class NotifyScreen extends StatelessWidget {
+class NotifyScreen extends StatefulWidget {
   const NotifyScreen({super.key});
+
+  @override
+  State<NotifyScreen> createState() => _NotifyScreenState();
+}
+
+class _NotifyScreenState extends State<NotifyScreen> {
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
 
   @override
   Widget build(BuildContext context) {
@@ -27,27 +37,21 @@ class NotifyScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Bell Icon
             const Icon(
               Icons.notifications_active,
               size: 90,
               color: Colors.black,
             ),
             const SizedBox(height: 30),
-
-            // Title
             Text(
               "Don't miss any reminders about your pet!",
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                //height: 1.2,
               ),
             ),
             const SizedBox(height: 50),
-
-            // Description
             Text(
               'Allow push notifications to receive alerts\nabout your pet\'s upcoming reminders.',
               textAlign: TextAlign.center,
@@ -58,8 +62,6 @@ class NotifyScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 40),
-
-            // Allow Button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -70,8 +72,23 @@ class NotifyScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                onPressed: () {
-                  // Add notification permission request logic here
+                onPressed: () async {
+                  final status = await Permission.notification.request();
+                  if (status.isGranted) {
+                    const initializationSettingsAndroid =
+                        AndroidInitializationSettings('@mipmap/ic_launcher');
+                    const initializationSettingsIOS =
+                        DarwinInitializationSettings();
+                    const initializationSettings = InitializationSettings(
+                      android: initializationSettingsAndroid,
+                      iOS: initializationSettingsIOS,
+                    );
+                    await flutterLocalNotificationsPlugin.initialize(
+                      initializationSettings,
+                    );
+                    // ignore: use_build_context_synchronously
+                    Navigator.pop(context);
+                  }
                 },
                 child: Text(
                   'Yes, allow',
@@ -84,8 +101,6 @@ class NotifyScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-
-            // Maybe Later Button
             TextButton(
               onPressed: () => Navigator.pop(context),
               child: Text(

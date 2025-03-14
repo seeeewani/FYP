@@ -1,4 +1,7 @@
-import 'package:final_year_project/screens/Add_pet/add_record.dart';
+import 'package:final_year_project/screens/adding_pets/add_pet.dart';
+import 'package:final_year_project/screens/record_page/add_record.dart';
+import 'package:final_year_project/screens/record_page/notify.dart';
+//import 'package:final_year_project/screens/add/add_pet.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,10 +11,11 @@ class AddHomePetScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFD6CDEA),
+      backgroundColor: const Color(0xFFECE1F0),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFD6CDEA),
+        backgroundColor: const Color(0xFFECE1F0),
         elevation: 0,
+        automaticallyImplyLeading: false,
         title: Text(
           'Welcome Shiwani,',
           style: GoogleFonts.lato(
@@ -20,13 +24,21 @@ class AddHomePetScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(right: 30),
-            child: Icon(
-              Icons.notifications_outlined,
-              color: Colors.black,
-              size: 30,
+            padding: const EdgeInsets.only(right: 30),
+            child: IconButton(
+              icon: const Icon(
+                Icons.notifications_outlined,
+                color: Colors.black,
+                size: 30,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotificationPage()),
+                );
+              },
             ),
           ),
         ],
@@ -153,7 +165,13 @@ class AddHomePetScreen extends StatelessWidget {
             const SizedBox(height: 16),
             // Add Pet Button
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PetNameScreen()),
+                );
+              },
               child: Text(
                 '+ Add Pet',
                 style: GoogleFonts.lato(

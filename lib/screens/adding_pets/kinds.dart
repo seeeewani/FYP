@@ -1,5 +1,4 @@
-import 'package:final_year_project/screens/add/create_screen.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:final_year_project/screens/adding_pets/create_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,26 +10,17 @@ class Kind extends StatefulWidget {
 }
 
 class _KindState extends State<Kind> {
+  String? selectedPet;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFECE1F0),
       appBar: AppBar(
         backgroundColor: const Color(0xFFECE1F0),
-        leading: Container(
-          margin: EdgeInsets.only(left: 3),
-          child: IconButton(
-            icon: Icon(
-              CupertinoIcons.back,
-              size: 35,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Create()),
-              );
-            },
-          ),
+        automaticallyImplyLeading: true,
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+          size: 30,
         ),
       ),
       body: Center(
@@ -62,12 +52,28 @@ class _KindState extends State<Kind> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedPet =
+                                    'Dog'; // Set 'Dog' as the selected pet
+                              });
+                            },
                             child: Container(
                               height: 180,
                               width: 180,
                               decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(15)),
+                                color: selectedPet == 'Dog'
+                                    ? Colors.blue[100]
+                                    : Colors.white, // Highlight selected pet
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                  color: selectedPet == 'Dog'
+                                      ? Colors.blue
+                                      : Colors
+                                          .transparent, // Border color for selected pet
+                                  width: 3,
+                                ),
+                              ),
                               child: Column(
                                 children: [
                                   Image.asset(
@@ -88,18 +94,33 @@ class _KindState extends State<Kind> {
                                 ],
                               ),
                             ),
-                            onTap: () {},
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedPet =
+                                    'Cat'; // Set 'Cat' as the selected pet
+                              });
+                            },
                             child: Container(
                               height: 180,
                               width: 180,
                               decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(15)),
+                                color: selectedPet == 'Cat'
+                                    ? Colors.blue[100]
+                                    : Colors.white, // Highlight selected pet
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                  color: selectedPet == 'Cat'
+                                      ? Colors.blue
+                                      : Colors
+                                          .transparent, // Border color for selected pet
+                                  width: 3,
+                                ),
+                              ),
                               child: Column(
                                 children: [
                                   Padding(
@@ -123,7 +144,6 @@ class _KindState extends State<Kind> {
                                 ],
                               ),
                             ),
-                            onTap: () {},
                           ),
                         ],
                       ),
@@ -150,10 +170,19 @@ class _KindState extends State<Kind> {
                     )),
                   ),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => (Create())),
-                    );
+                    if (selectedPet != null) {
+                      // If a pet is selected, navigate to the next screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Create()),
+                      );
+                    } else {
+                      // Show a message if no pet type is selected
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text('Please select a pet type!')),
+                      );
+                    }
                   },
                 ),
               ]),

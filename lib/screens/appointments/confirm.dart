@@ -2,13 +2,73 @@ import 'package:final_year_project/screens/appointments/success_msg.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ConfirmScreen extends StatelessWidget {
-  const ConfirmScreen({super.key});
+class ConfirmScreen extends StatefulWidget {
+  final TimeOfDay time;
+  final DateTime date;
+  final String service;
+  final String vet;
+  final String reason;
+  final String type;
+  const ConfirmScreen({
+    super.key,
+    required this.time,
+    required this.date,
+    required this.service,
+    required this.vet,
+    required this.reason,
+    required this.type,
+  });
+  @override
+  State<ConfirmScreen> createState() => _ConfirmScreenState();
+}
+
+class _ConfirmScreenState extends State<ConfirmScreen> {
+  final TextEditingController _promoController = TextEditingController();
+  double _totalPrice = 1500;
+  double _discount = 0;
+  bool _isPromoApplied = false;
+
+  void _applyPromoCode(String code) {
+    // Mock promo codes for demonstration
+    final Map<String, double> promoCodes = {
+      'FIRST20': 0.20,
+      'SAVE10': 0.10,
+      'VET15': 0.15,
+    };
+
+    if (promoCodes.containsKey(code)) {
+      setState(() {
+        _discount = _totalPrice * promoCodes[code]!;
+        _totalPrice = _totalPrice - _discount;
+        _isPromoApplied = true;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+              'Promo code applied! You saved Rs. ${_discount.toStringAsFixed(2)}'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Invalid promo code!'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _promoController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE6E6FA),
+      backgroundColor: const Color(0xFFD1C2E0),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -60,7 +120,7 @@ class ConfirmScreen extends StatelessWidget {
           height: 180,
         ),
         title: Text(
-          'Dr. Neha Shrestha',
+          widget.vet,
           style: GoogleFonts.lato(
             fontWeight: FontWeight.bold,
             fontSize: 20,
@@ -95,27 +155,39 @@ class ConfirmScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+            color: _isPromoApplied ? Colors.green : Colors.grey[300]!),
       ),
       child: Row(
         children: [
-          const Icon(Icons.local_offer_outlined),
+          Icon(Icons.local_offer_outlined,
+              color: _isPromoApplied ? Colors.green : Colors.grey),
           const SizedBox(width: 8),
           Expanded(
             child: TextField(
-              decoration: const InputDecoration(
+              controller: _promoController,
+              decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: 'Promo Code',
+                hintText:
+                    _isPromoApplied ? 'Promo Code Applied' : 'Enter Promo Code',
+                hintStyle: TextStyle(
+                    color: _isPromoApplied ? Colors.green : Colors.grey),
               ),
+              enabled: !_isPromoApplied,
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.arrow_forward),
-            onPressed: () {
-              // Here you can handle promo code application logic
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Promo code applied!')),
-              );
-            },
+            icon: Icon(
+              _isPromoApplied ? Icons.check_circle : Icons.arrow_forward,
+              color: _isPromoApplied ? Colors.green : Colors.grey,
+            ),
+            onPressed: _isPromoApplied
+                ? null
+                : () {
+                    if (_promoController.text.isNotEmpty) {
+                      _applyPromoCode(_promoController.text.toUpperCase());
+                    }
+                  },
           ),
         ],
       ),
@@ -134,12 +206,27 @@ class ConfirmScreen extends StatelessWidget {
               style:
                   GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16),
-            DetailRow(title: 'Full Name', value: 'Shiwani Shrestha'),
-            DetailRow(title: 'Date', value: '10th July, 2024'),
-            DetailRow(title: 'Time', value: '8:00 - 10:00 AM'),
-            DetailRow(title: 'Promo Code', value: 'SIPWJMM'),
-            DetailRow(title: 'Total Price', value: 'Rs. 1500'),
+            const SizedBox(height: 16),
+            DetailRow(title: 'Appointment Type', value: widget.type),
+            DetailRow(title: 'Service', value: widget.service),
+            DetailRow(title: 'Reason', value: widget.reason),
+            DetailRow(
+                title: 'Date',
+                value:
+                    '${widget.date.day}/${widget.date.month}/${widget.date.year}'),
+            DetailRow(
+                title: 'Time',
+                value:
+                    '${widget.time.hour.toString().padLeft(2, '0')}:${widget.time.minute.toString().padLeft(2, '0')}'),
+            if (_isPromoApplied)
+              DetailRow(
+                title: 'Discount',
+                value: '- Rs. ${_discount.toStringAsFixed(2)}',
+              ),
+            DetailRow(
+              title: 'Total Price',
+              value: 'Rs. ${_totalPrice.toStringAsFixed(2)}',
+            ),
           ],
         ),
       ),

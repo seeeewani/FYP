@@ -59,22 +59,21 @@ class _ManageAccountPageState extends State<ManageAccountPage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         child: ListView(
           children: [
             // Change Password Section
             Container(
-              margin: EdgeInsets.symmetric(vertical: 1),
-              //padding: EdgeInsets.all(12),
+              padding: EdgeInsets.all(6),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                //border: Border.all(color: Colors.purple, width: 1.5),
+                //border: Border.all(color: Colors.black, width: 1),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black12,
-                    blurRadius: 5,
-                    offset: Offset(0, 4),
+                    blurRadius: 6,
+                    offset: Offset(0, 3),
                   ),
                 ],
               ),
@@ -82,15 +81,14 @@ class _ManageAccountPageState extends State<ManageAccountPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   buildPasswordField(
-                      controller: _currentPasswordController,
-                      label: 'Current Password'),
-                  SizedBox(height: 20), // Increased spacing
-
+                    controller: _currentPasswordController,
+                    label: 'Current Password',
+                  ),
+                  SizedBox(height: 20),
                   buildPasswordField(
                       controller: _newPasswordController,
                       label: 'New Password'),
-                  SizedBox(height: 20), // Increased spacing
-
+                  SizedBox(height: 20),
                   buildPasswordField(
                       controller: _confirmPasswordController,
                       label: 'Confirm New Password'),
@@ -101,16 +99,16 @@ class _ManageAccountPageState extends State<ManageAccountPage> {
 
             // Enable/Disable Two-Factor Authentication
             Container(
-              //padding: EdgeInsets.all(12),
+              padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
-                //border: Border.all(color: Colors.purple, width: 1.5),
+                //border: Border.all(color: Colors.purple.shade200, width: 1),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black12,
-                    blurRadius: 3,
-                    offset: Offset(0, 4),
+                    blurRadius: 4,
+                    offset: Offset(0, 3),
                   ),
                 ],
               ),
@@ -132,21 +130,33 @@ class _ManageAccountPageState extends State<ManageAccountPage> {
             SizedBox(height: 20),
 
             // Save Changes Button
-            ElevatedButton(
-              onPressed: _saveChanges,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purple,
-                padding: EdgeInsets.symmetric(vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 4,
+                    offset: Offset(0, 3),
+                  ),
+                ],
               ),
-              child: Text(
-                'Save Changes',
-                style: GoogleFonts.lato(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
+              child: ElevatedButton(
+                onPressed: _saveChanges,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.purple,
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: Text(
+                  'Save Changes',
+                  style: GoogleFonts.lato(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
                 ),
               ),
             ),
@@ -158,19 +168,31 @@ class _ManageAccountPageState extends State<ManageAccountPage> {
 
   Widget buildPasswordField(
       {required TextEditingController controller, required String label}) {
-    return TextField(
-      controller: controller,
-      obscureText: true,
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: GoogleFonts.lato(
-          color: Colors.black45,
-          fontWeight: FontWeight.bold,
-          fontSize: 15,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Colors.purple),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.grey.shade400, width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 3,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
+      child: TextField(
+        controller: controller,
+        obscureText: true,
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+          labelText: label,
+          labelStyle: GoogleFonts.lato(
+            color: Colors.black54,
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
+          ),
+          border: InputBorder.none,
         ),
       ),
     );

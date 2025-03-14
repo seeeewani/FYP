@@ -26,14 +26,14 @@ class DoctorDetail extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.favorite_border_sharp,
-                size: 28, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
+        //centerTitle: true,
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(Icons.favorite_border_sharp,
+        //         size: 28, color: Colors.black),
+        //     onPressed: () {},
+        //   ),
+        // ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

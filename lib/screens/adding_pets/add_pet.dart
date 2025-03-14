@@ -1,5 +1,5 @@
-import 'package:final_year_project/screens/add/kinds.dart';
-import 'package:flutter/cupertino.dart';
+//import 'package:final_year_project/screens/add/kinds.dart';
+import 'package:final_year_project/screens/adding_pets/kinds.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,15 +12,10 @@ class PetNameScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFECE1F0),
       appBar: AppBar(
         backgroundColor: const Color(0xFFECE1F0),
-        leading: Container(
-          margin: EdgeInsets.only(left: 3),
-          child: IconButton(
-            icon: Icon(
-              CupertinoIcons.back,
-              size: 35,
-            ),
-            onPressed: () => Navigator.pop(context),
-          ),
+        automaticallyImplyLeading: true,
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+          size: 30,
         ),
       ),
       body: Padding(

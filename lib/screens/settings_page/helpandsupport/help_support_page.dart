@@ -1,10 +1,11 @@
-// ignore: file_names
-import 'package:final_year_project/screens/settings_page/manage.dart';
+import 'package:final_year_project/screens/settings_page/helpandsupport/contact_page.dart';
+import 'package:final_year_project/screens/settings_page/helpandsupport/questions.dart';
+import 'package:final_year_project/screens/settings_page/helpandsupport/report_issue.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PrivacyAndSecurityScreen extends StatelessWidget {
-  const PrivacyAndSecurityScreen({super.key});
+class HelpAndSupportScreen extends StatelessWidget {
+  const HelpAndSupportScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class PrivacyAndSecurityScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          "Privacy & Security",
+          "Help & Support",
           style: GoogleFonts.lato(
               fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
         ),
@@ -29,39 +30,47 @@ class PrivacyAndSecurityScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // // Privacy & Security Section
+            // // Help & Support Section
             // Text(
-            //   "Privacy & Security Settings",
+            //   "Help & Support",
             //   style: GoogleFonts.lato(
             //       fontSize: 20,
             //       fontWeight: FontWeight.bold,
             //       color: Colors.black),
             // ),
             const SizedBox(height: 10),
-
             buildSettingsTile(
               context,
-              Icons.lock_outline,
-              "Change Password",
-              () {},
-            ),
-            buildSettingsTile(
-              context,
-              Icons.security,
-              "Manage Account Security",
+              Icons.contact_support_outlined,
+              "Contact Support",
               () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const ManageAccountPage()),
+                  MaterialPageRoute(builder: (context) => const ContactPage()),
                 );
               },
             ),
             buildSettingsTile(
               context,
-              Icons.verified_user_outlined,
-              "Enable Two-Factor Authentication",
-              () {},
+              Icons.question_answer_outlined,
+              "FAQs",
+              () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const QuestionPage()),
+                );
+              },
+            ),
+            buildSettingsTile(
+              context,
+              Icons.report_problem_outlined,
+              "Report an Issue",
+              () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ReportPage()),
+                );
+              },
             ),
           ],
         ),

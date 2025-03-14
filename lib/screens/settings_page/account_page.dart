@@ -1,7 +1,10 @@
-import 'package:final_year_project/screens/settings_page/Privacy_page.dart';
-import 'package:final_year_project/screens/settings_page/help_support_page.dart';
+import 'package:final_year_project/screens/record_page/notification_permission.dart';
+//import 'package:final_year_project/screens/record_page/notify.dart';
+import 'package:final_year_project/screens/settings_page/helpandsupport/help_support_page.dart';
 import 'package:final_year_project/screens/settings_page/pet_info.dart';
+import 'package:final_year_project/screens/settings_page/privacyandsecurity/privacy_page.dart';
 import 'package:final_year_project/screens/settings_page/review_page.dart';
+import 'package:final_year_project/screens/starting%20pages/get_started.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,7 +24,7 @@ class _AccountScreenState extends State<AccountScreen> {
     return Scaffold(
       backgroundColor: Color(0xFFECE1F0),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xFFECE1F0),
         elevation: 0.5,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, size: 28, color: Colors.black),
@@ -37,18 +40,36 @@ class _AccountScreenState extends State<AccountScreen> {
           IconButton(
             icon: const Icon(Icons.notifications_outlined,
                 size: 28, color: Colors.black),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const NotificationPermissionPage()),
+              );
+            },
           ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Profile Section
-            Card(
-              elevation: 2,
+            // Profile Section with BoxDecoration
+            Container(
+              padding: EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                //border: Border.all(color: Colors.purple, width: 1.5),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 6,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
               child: ListTile(
                 leading: const CircleAvatar(
                   radius: 20,
@@ -61,18 +82,9 @@ class _AccountScreenState extends State<AccountScreen> {
                   style: GoogleFonts.lato(
                       fontSize: 22, fontWeight: FontWeight.bold),
                 ),
-                // subtitle: TextButton(
-                //   onPressed: () {},
-                //   child: Text(
-                //     'Show Profile',
-                //     style: GoogleFonts.lato(color: Colors.deepPurpleAccent),
-                //   ),
-                // ),
-                // trailing: const Icon(Icons.arrow_forward_ios,
-                //     size: 25, color: Colors.black),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
 
             // Settings Section
             buildSettingsTile(
@@ -124,18 +136,37 @@ class _AccountScreenState extends State<AccountScreen> {
                 );
               },
             ),
-            buildSettingsTile(Icons.logout, "Logout", isLogout: true),
+            buildSettingsTile(Icons.logout, "Logout", isLogout: true,
+                onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const OnLoadingScreen()),
+              );
+            }),
           ],
         ),
       ),
     );
   }
 
-  // General Setting Tile
+  // General Setting Tile with BoxDecoration
   Widget buildSettingsTile(IconData icon, String title,
       {bool isLogout = false, VoidCallback? onTap}) {
-    return Card(
-      elevation: 1,
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 6),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.shade300, width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 4,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
       child: ListTile(
         leading: Icon(icon, color: Colors.black),
         title: Text(
@@ -149,11 +180,23 @@ class _AccountScreenState extends State<AccountScreen> {
     );
   }
 
-  // Toggle Switch Tile
+  // Toggle Switch Tile with BoxDecoration
   Widget buildSwitchTile(
       IconData icon, String title, bool value, Function(bool) onChanged) {
-    return Card(
-      elevation: 1,
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 6),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.shade300, width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 4,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
       child: ListTile(
         leading: Icon(icon, color: Colors.black),
         title: Text(
@@ -163,7 +206,7 @@ class _AccountScreenState extends State<AccountScreen> {
         trailing: Switch(
           value: value,
           onChanged: onChanged,
-          activeColor: Colors.purple,
+          activeColor: Color.fromARGB(255, 100, 14, 132),
         ),
       ),
     );

@@ -1,4 +1,5 @@
-import 'package:final_year_project/screens/add/add_pet.dart';
+//import 'package:final_year_project/screens/add/add_pet.dart';
+import 'package:final_year_project/screens/adding_pets/add_pet.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,7 +9,7 @@ class AddPetScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFD1C4E9),
+      backgroundColor: const Color(0xFFECE1F0),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),

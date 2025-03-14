@@ -16,7 +16,7 @@ class DoctorList extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             child: SizedBox(
               height: 45,
-              width: 2000,
+              width: 3000,
               child: TextField(
                 decoration: InputDecoration(
                   filled: true,
